@@ -57,7 +57,7 @@ class ScoreBoard {
         this.timer && clearInterval(this.timer);
     }
 
-    onShotWolfListener(killed_wolves){
+    onShotWolf(killed_wolves){
         const remain_wolves = this.numberOfWolves-killed_wolves;
         this.printWolvesRemain(remain_wolves);
     }
@@ -67,7 +67,7 @@ class ScoreBoard {
     }
 
     printTimeIndicator(remain_sec){
-        this.timeIndicator.textContent = `남은 시간 : ${remain_sec}`;
+        this.timeIndicator.textContent = `남은 시간 : ${remain_sec}초`;
     }
 
     printWolvesRemain(remain_wolves){
