@@ -2,7 +2,15 @@
 
 const MSG_GAME_START = "게임을 시작합니다.";
 
-export default class ScoreBoardBuilder {
+export const MSG = Object.freeze({
+    start : "게임을 시작합니다.",
+    sheepkill : "당신은 양을 죽여서 해고되었습니다.",
+    usrRequest :"요청에 따라 게임을 종료하였습니다.",
+    win : "늑대를 모두 없앴습니다. 축하드립니다.",
+    timeout : "시간이 초과되었습니다."
+});
+
+export class ScoreBoardBuilder {
     timeLimitSec(timeLimitSec){
         this.timeLimitSec = timeLimitSec;
         return this;
@@ -30,14 +38,14 @@ class ScoreBoard {
     }
 
     onGameStartListener(){
+        this.printTimeIndicator(this.timeLimitSec);
+        this.tictok(this.timeLimitSec);
         this.printMessage(MSG_GAME_START);
-        this.tictok();
-        this.printWolvesRemain(0);
+        this.printWolvesRemain(this.numberOfWolves);
     }
 
     tictok(){
         let timeRemain = this.timeLimitSec;
-        console.log(this)
         this.timer = setInterval(()=>{
             timeRemain--;
             this.printTimeIndicator(timeRemain);
