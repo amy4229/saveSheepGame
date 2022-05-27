@@ -63,22 +63,16 @@ class Farm {
     }
 
     _makeAnimal(animal) {
+        const min_x = 0;
+        const min_y = 0;
+        const max_x = this.farm.clientWidth - WIDTH_OF_ANIMAL;
+        const max_y = this.farm.clientHeight - HEIGHT_OF_ANIMAL;
         const animal_comp = document.createElement("img");
         animal_comp.classList.add(animal.class);
         animal_comp.setAttribute("alt", animal.name);
-        animal_comp.style.left = this._getRandomX();
-        animal_comp.style.top = this._getRandomY();
+        animal_comp.style.left = `${makeRandomNumber(min_x,max_x)}px`;
+        animal_comp.style.top = `${makeRandomNumber(min_y, max_y)}px`;
         this.farm.appendChild(animal_comp);
-    }
-
-    _getRandomX() {
-        const max_x = this.farm.clientWidth - WIDTH_OF_ANIMAL;
-        return Math.floor(Math.random() * max_x) + "px";
-    }
-
-    _getRandomY() {
-        const max_y = this.farm.clientHeight - HEIGHT_OF_ANIMAL;
-        return Math.floor(Math.random() * max_y) + "px";
     }
 
     setFarmClickListener(onFarmClick) {
@@ -86,7 +80,6 @@ class Farm {
     }
 
     onClick = (event) => {
-        console.log("onClick")
         const target = event.target;
         let animal = ''; 
         if (target.matches(`.${Animal.wolf.class}`)) {
@@ -97,7 +90,6 @@ class Farm {
         }else if(target.matches(`.${Animal.sheep.class}`)){
             animal = `${Animal.sheep.name}`; 
         }
-        console.log(animal)
         this.onFarmClick && this.onFarmClick(animal);
     }
    
@@ -106,4 +98,9 @@ class Farm {
         this.farm.innerHTML = "";
     }
 
+}
+
+function makeRandomNumber(min, max) {
+    console.log(Math.random()*(max-min));
+    return Math.floor(Math.random()*(max-min)+min);
 }
