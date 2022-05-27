@@ -1,6 +1,6 @@
 'use strict';
 import * as sound from "./sound.js"
-import {ScoreBoardBuilder,MSG} from "./scoreBoard.js"
+import {ScoreBoardBuilder,GameStatus} from "./scoreBoard.js"
 import {
     FarmBuilder,
     Animal
@@ -42,7 +42,7 @@ function start() {
     scoreBoard.onGameStartListener();
     moveSun();
     farm.init();
-    timeout = setTimeout(() => lose(MSG.timeout), TIME_LIMIT_SEC * 1000);
+    timeout = setTimeout(() => lose(GameStatus.timeout), TIME_LIMIT_SEC * 1000);
 }
 
 function shotgun() {
@@ -66,7 +66,7 @@ function onFarmClick(animal) {
             win();
         }
     } else if (animal === `${Animal.sheep.name}`) {
-        lose(MSG.sheepkill);
+        lose(GameStatus.sheepkill);
     }
     console.log("onFarmClick")
 }
@@ -79,7 +79,7 @@ function onButtonClick() {
         start();
     } else {
         btn_comp.classList.remove(CLASS_END)
-        lose(MSG.usrRequest);
+        lose(GameStatus.stop);
     }
 }
 
@@ -108,15 +108,15 @@ function moveSun() {
 
 function win() {
     sound.playWin();
-    end(MSG.win);
+    end(GameStatus.win);
 }
 
-function lose(msg) {
+function lose(reason) {
     sound.playLose();
-    end(msg);
+    end(reason);
 }
 
-function end(msg) {
+function end(reason) {
     sound.stopBgm();
     farm.finish();
     btn_comp.classList.remove(CLASS_END);
@@ -124,7 +124,7 @@ function end(msg) {
     stopSun(sunMove_ani);
     clearInterval(clock_interval);
     clearTimeout(timeout);
-    scoreBoard.finished(msg);
+    scoreBoard.finished(reason);
 }
 
 function stopSun(sunMove) {

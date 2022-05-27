@@ -2,10 +2,10 @@
 
 const MSG_GAME_START = "게임을 시작합니다.";
 
-export const MSG = Object.freeze({
+export const GameStatus = Object.freeze({
     start : "게임을 시작합니다.",
     sheepkill : "당신은 양을 죽여서 해고되었습니다.",
-    usrRequest :"요청에 따라 게임을 종료하였습니다.",
+    stop :"요청에 따라 게임을 종료하였습니다.",
     win : "늑대를 모두 없앴습니다. 축하드립니다.",
     timeout : "시간이 초과되었습니다."
 });
