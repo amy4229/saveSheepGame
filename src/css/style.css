@@ -6,32 +6,33 @@ body{
     height: 100vh;
 }
 
-.wrapper{
+.game{
     position:relative;
     margin:auto;
     width: 800px;
     height: 600px;
-    background:center/ contain url("../../images/배경.jpg");
+    background:center/ cover url("../../images/배경.jpg");
     background-repeat: no-repeat;
 }
-.sun{
+.game__header{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+.game__header__sun{
     width: 100%;
     height: 140px;
 }
-.sun-image {
+.game__header__sun__img {
     position : absolute;
     top :5px;
     left : 5px;
     width:150px;
 }
 
-header{
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-}
 
-header button{
+
+.game__header__btn{
     margin: auto;
     padding: 10px;
     border: none;
@@ -48,61 +49,59 @@ header button{
     color: white;
 }
 
-header button::after{
+.game__header__btn::after{
     content:"START"
 }
 
-.end{
+.game__header__btn--end{
     background: darkgrey;
     color: white;
 }
-.end::after{
+.game__header__btn--end::after{
     content:"END";
 }
 
-header button:hover{
+.game__header__btn:hover{
     background: white;
     color: black;
     border-bottom: 2px solid #1fb41f
     
 }
 
-main{
+.game__farm{
     position: relative;
     width:100%;
     height:340px;
     cursor: url(/images/sniper.gif),pointer;
 }
 
-.wolf, .sheep{
+.game__farm__wolf, .game__farm__sheep,.game__farm__wolf--die{
     position : absolute;
     height : 70px;
     width: 100px;
     background-size: contain;
     background-repeat: no-repeat;
+    transition : 0.2s ease-in;
 }
-.wolf{
-    background-image: url("/images/wolf.png");
+
+.game__farm__wolf:hover, .game__farm__sheep:hover{
+    transform:scale(1.1);
+}
+
+.game__farm__wolf{
+    content: url("/images/wolf.png");
     z-index: 10;
 }
-.wolf.die{
-    background-image: url("/images/wolf_bone.png");
+.game__farm__wolf--die{
+    content: url("/images/wolf_bone.png");
     z-index: 1;
 }
-.sheep{
-    background-image: url("/images/sheep.png");
-}
-.sheep.die{
-    background-image: url("/images/lamb.png");
+.game__farm__sheep{
+    content: url("/images/sheep.png");
 }
 
 
-.sheep{
-    background-image: url;
-}
-
-
-footer{
+.game__score_board{
     width:100%;
     height:55px;
     display: grid;
@@ -115,13 +114,13 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
 }
-.message {
+.game__score_board__message {
     grid-area: message;
 }
-.time-limit{
+.game__score_board__timer{
     grid-area: time-limit;
 }
-.remain-wolves{
+.game__score_board__remain_wolves{
     grid-area: remain-wolves;
 }
 .copylight{
