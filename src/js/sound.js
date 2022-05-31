@@ -1,9 +1,9 @@
 'use strict';
 
-const GUN_SOUND = "/sounds/180961__kleeb__gunshots.wav";
-const BGM = "/sounds/식물 소개.mp3";
-const WIN_SOUND = "/sounds/425663__camo1018__clapping.mp3";
-const LOSE_SOUND = "/sounds/253174__suntemple__retro-you-lose-sfx.wav";
+const GUN_SOUND = "sounds/180961__kleeb__gunshots.wav";
+const BGM = "sounds/식물 소개.mp3";
+const WIN_SOUND = "sounds/425663__camo1018__clapping.mp3";
+const LOSE_SOUND = "sounds/253174__suntemple__retro-you-lose-sfx.wav";
 
 const bgm = new Audio(BGM);
 const winSound = new Audio(WIN_SOUND);
