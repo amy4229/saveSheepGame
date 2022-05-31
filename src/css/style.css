@@ -72,7 +72,7 @@ body{
     position: relative;
     width:100%;
     height:340px;
-    cursor: url("images/sniper.gif"),pointer;
+    cursor: url("../../images/sniper.gif"),pointer;
 }
 
 .game__farm__wolf, .game__farm__sheep,.game__farm__wolf--die{
@@ -89,15 +89,15 @@ body{
 }
 
 .game__farm__wolf{
-    content: url("images/wolf.png");
+    content: url("../../images/wolf.png");
     z-index: 10;
 }
 .game__farm__wolf--die{
-    content: url("images/wolf_bone.png");
+    content: url("../../images/wolf_bone.png");
     z-index: 1;
 }
 .game__farm__sheep{
-    content: url("images/sheep.png");
+    content: url("../../images/sheep.png");
 }
 
 
